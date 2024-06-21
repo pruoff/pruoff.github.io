@@ -68,7 +68,9 @@
           </li>
           {% endif %}
         </ul>
-        <p class="copyright text-muted">{{ site.author }}, Peter-Paul-Althaus-Str. 15, 80805 München, Telefon: 017645945423, E-Mail: patrickruoff95@gmail.com</p>
+        <p class="copyright text-muted">Copyright &copy; {{ site.author }} {{ 'now' | date: "%Y" }}
+          <a class="nav-link" href="{{"/legal" | relative_url }}">Legal</a>
+        </p>
       </div>
     </div>
   </div>

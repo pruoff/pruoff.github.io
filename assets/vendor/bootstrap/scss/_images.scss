@@ -40,3 +40,30 @@
   @include font-size($figure-caption-font-size);
   color: $figure-caption-color;
 }
+
+.keyword {
+  color: #0000FF;
+  font-weight: bold;
+}
+.builtin {
+  color: #007F7F;
+}
+.string {
+  color: #7F007F;
+}
+.comment {
+  color: #7F7F7F;
+  font-style: italic;
+}
+.function {
+  color: #0000FF;
+}
+.class-name {
+  color: #007F7F;
+}
+.decorator {
+  color: #AA22FF;
+}
+.number {
+  color: #164;
+}

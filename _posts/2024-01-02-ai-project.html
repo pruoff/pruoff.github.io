@@ -1,0 +1,189 @@
+---
+layout: post
+title: "How I used AI for a 7 year hobby project"
+date: 2024-01-02 12:00:00 +0100
+background: '/img/posts/adam_and_robot.jpg'
+---
+
+<p align=“justify“>
+    Back in 2017, Philipp, a close friend of mine, and I were struck by clips like <a href="https://www.youtube.com/watch?v=wAIZ36GI4p8">this one</a>.
+    Noah (who I will refer to later) took the same selfie every day over 20 years and animated it so you could watch him
+    age and change for two decades in only a few minutes. We were intrigued of the idea of having such a video on
+    our own. So we agreed to try it out too and started taking a selfie every other day.
+</p>
+
+<p align=“justify“>
+    I soon realized, what many influencers did before me: 'Taking selfies ain't easy'.
+    Every photo will be one frame in the final sequence. For us human watchers to grasp the changes in a fast
+    GIF, we need the changes to be limited to certain areas and colors. If the lighting, rotation, background, facial 
+    expression, facial covers, etc. change too much, the video will be chaos. 
+    Just look at this GIF:
+</p>
+
+<img class="img-fluid" src="/img/posts/ai_project/chaos.gif" alt="A chaotic GIF.">
+<span class="caption text-muted">A chaotic GIF of selfies with too many changes to grasp the similarities.</span>
+
+<p align=“justify“>
+    I suppose that is why Noah on YouTube looks like "on the verge of crying" (one of the top-comments).
+    A stern expression might make for a better GIF since various types
+    of grins disturb our perception when the frames change fast.
+    So starting out, I also did not intend to look particularly happy.
+    As you will see, years later I - somewhat - changed that.
+</p>
+
+<p align=“justify“>
+    What also caught my eye, is the lighting. You normally
+    do not think about this but in most places, the face is lit from exactly one direction
+    casting shadow on one part of the face while the other part is bright. 
+    In his video, Noah chose one side to be dominantly lit while the other side stays dark.
+    I did want to 
+    take the selfies everywhere and not always in the exact same setting so I tried to
+    look straigt into the main light source. Then again, I had to watch out that
+    my arms and the phone do not cast a shadow on my face. Also, the difference between
+    warm, natural light and cold, artificial light can be irritating when the changes
+    in the GIF are frequent. I have to discard lots of frames because they don't fit
+    their neighboring photos.
+</p>
+
+<p align=“justify“>
+    In the beginnning, the process of daily selfie taking is not very rewarding but 
+    neither is it too tedious. To keep ourselves motivated, Philipp and me made a bet:
+    whoever missed taking a selfie for two consecutive weeks, would need to join on a festival-trip
+    that the other one choses. 
+    Some background: back then we were attending four and more festivals a year. 
+    Yet, our tastes differed sometimes so it was worth a lot to finally being able to force a friend to 
+    join a more niche kind of music event that fully fulfilled ones own musical taste.
+</p>
+
+<p align=“justify“>
+    The months passed and the seflies amassed in our gallery. Now, we were facing the
+    next challenge. How should we create such a video? I was just starting programming 
+    more with Python back then but did not even think about using it as tool. Instead,
+    I manually tried to cut and resize all the images with the basic MacOS Preview app. 
+    A tedious process making my hands twitch at the thought.
+</p>
+
+<p align=“justify“>
+    Yet, after many hours, the result was not too bad (please keep in mind what 
+    I said about the stern expression before judging my seemingly depressive mood):
+</p>
+
+
+<video loop autoplay height="auto" width="40%" display="block">
+    <source src="/img/posts/ai_project/2018.mp4" type="video/mp4"/>
+    Your browser does not support the video tag.
+</video>
+<span class="caption text-muted">The first GIF after one year (shortened).</span>
+
+<p align=“justify“>
+    The 'tool' I used to create the GIF from the individual files was the MacOS built-in feature
+    to unite a selection of pictures as a GIF (I used a newer version of this feature 
+    for the chaotic GIF at the top).
+    Not very cutting-edge but back then, it could include up to 50 pictures, which sufficed.
+    Yet, the files were not compressed so the total file size grew to 400MB later on! That is way too
+    much to display on a post like this but I could still show it off to friends on my
+    laptop. By now, I create mp4 files instead of GIFs, which makes it at least 80 times smaller.
+</p>
+
+<p align=“justify“>
+    Apart from alignment, handling the individual files was tedious as well. I even
+    messed up the order of the photos. What is more disturbing, is the jumping around of the face.
+    The facial markers are not aligned between the pictures (which is even more extreme
+    in Noah's video on YouTube). So I did some more manual cutting but I could not really 
+    make it smooth in reasonable time.
+</p>
+
+<p align=“justify“>
+    Fast forward four years to 2022, I still took a selfie every now and then but missed many weeks. I even lost 
+    the bet and am in debt of one festival (pity me)! One day in my holidays,
+    the thought about the project came to me. By then, I became a Python professional, dealing
+    with terabytes of data every day. So I thought: why not try to automate the full 
+    process and tinker with the new tools at my hand.
+</p>
+
+<p align=“justify“>
+    So I decided to try out OpenCV with its AI models for facial recognition. 
+    The simple idea was to let the AI recognize the location of the face in the images.
+    Then I could resize, cut and realign all the selfies, such that the face is always in the same location.
+</p>
+
+<p align=“justify“>
+    It took only some tinkering in a Jupyter Notebook to make it work. I was immensely
+    impressed by how fast I could automate a process that would have taken me hours and 
+    days (by then it were more than 200 photos) to do manually. Here's how it works:
+</p>
+
+<p align=“justify“>
+    The code is pretty straight forward since all I do is recognizing the face location 
+    and then setting a fixed horizontal and vertical ratio that the photos will be aligned 
+    to. 
+</p>
+
+<img class="img-fluid" src="/img/posts/ai_project/with_box.jpeg" alt="A selfie with a box printed around the face.">
+<span class="caption text-muted">A selfie with the box printed that OpenCV recognized as the face area.</span>
+
+<p align=“justify“>
+    Let's say, I decided the horizontal margin ratio is 0.75 and the 
+    face in one photo was recognized to be 100px wide and has a left margin of 60px (= distance from the face to the left side) and a right margin 
+    of 80px (i.e. the face is not in the center but on the left of the photo, like in the selfie above). 
+    Then, the horizontal margin ratio, for me, means that I want 75px (= ratio * face width) both 
+    on the left and right of the face, so the face ends up in the center. Since the left margin
+    is only 60px and I need 75px, I create a black left-padding of 15px. On the right,
+    I also want 75px but have 80px so I cut off 5px.
+</p>
+
+<img class="img-fluid" src="/img/posts/ai_project/with_box_h_aligned.jpeg" alt="A selfie with a box printed around the face.">
+<span class="caption text-muted">The same selfie with left padding and cut on the right.</span>
+
+<p align=“justify“>
+    I rather cut than introduce lots of black padding in the GIF. So I did a small analysis
+    of the ratios between the face and both the left and the right margin.
+    The result looks like this:
+</p>
+
+<img class="img-fluid" src="/img/posts/ai_project/scatter.jpeg" alt="A scatter plot of left and right margin ratios.">
+<span class="caption text-muted">A scatter plot of left margin ratio to right margin ratio.</span>
+
+<p align=“justify“>
+    The margins roughly range from 0.4 to 1.4. Therefore, I set a horizontal margin ratio 
+    of 0.75 so lots of photos are cut and fewer photos get a padding. 
+</p>
+<p align=“justify“>
+    Interestingly, the ratios seem to align quite well to the center but judging from the 
+    top right corner of the plot, I tend to have a slightly higher margin on the right than left. 
+    This is most likely because I always hold my phone with my right hand when taking a selfie.
+</p>
+<p align=“justify“>
+    I apply this process of alignment also for the vertical dimension. Then, OpenCV also
+    offers out-of-the-box mp4 creation, which makes it possible for me to create GIFs of
+    hundreds of frames with small files sizes and higher resolution than GIF itself.
+    The video you see below has 229 frames in 6.6MB. I removed many photos from this
+    post that I do not want to share publicly but I ended up taking one photo about every 
+    10 days on average.
+</p>
+<p align=“justify“>
+    The final result, which you were hopefully looking forward to by now is here:
+</p>
+
+<video loop autoplay height="auto" width="70%" display="block">
+    <source src="/img/posts/ai_project/full_avc1.mp4" type="video/mp4"/>
+    Your browser does not support the video tag.
+</video>
+<span class="caption text-muted">The current GIF after 7 years.</span>
+
+<p align=“justify“>
+    Looking at it, it's a personal journey through my life. Within these past seven years,
+    I changed my environment a lot: I lived abroad four times on four continents and moved 
+    within Munich six times. This reminds me that the only constant is change. Exciting!
+</p>
+
+<p align=“justify“>
+    I admit that I am not yet 100% satisfied with my setup, since some frames still break
+    the visual experience too much and I still struggle to find suiting lighting in many
+    settings. Yet, I am happy to have so many photos already and I might apply
+    some filters and new models on them in the future.
+</p>
+
+<p align=“justify“>
+    Let me know what you think!
+</p>
