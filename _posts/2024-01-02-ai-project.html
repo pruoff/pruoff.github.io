@@ -4,13 +4,21 @@ title: "How I used AI for a 7 year hobby project"
 date: 2024-01-02 12:00:00 +0100
 background: '/img/posts/adam_and_robot.jpg'
 ---
+<h2 class="section-heading">The idea</h2>
 
 <p align=“justify“>
-    Back in 2017, Philipp, a close friend of mine, and I were struck by clips like <a href="https://www.youtube.com/watch?v=wAIZ36GI4p8">this one</a>.
+    Back in 2017, Philipp, a close friend of mine, and I were struck by clips like this one.
+</p>
+
+<iframe display="block" width="100%" height="400" src="https://www.youtube.com/embed/wAIZ36GI4p8?si=Rb6NS1eUbbI1iKJy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<p>
     Noah (who I will refer to later) took the same selfie every day over 20 years and animated it so you could watch him
     age and change for two decades in only a few minutes. We were intrigued of the idea of having such a video on
     our own. So we agreed to try it out too and started taking a selfie every other day.
 </p>
+
+<h2 class="section-heading">The beginning</h2>
 
 <p align=“justify“>
     I soon realized, what many influencers did before me: 'Taking selfies ain't easy'.
@@ -55,6 +63,8 @@ background: '/img/posts/adam_and_robot.jpg'
     join a more niche kind of music event that fully fulfilled ones own musical taste.
 </p>
 
+<h2 class="section-heading">The challenge</h2>
+
 <p align=“justify“>
     The months passed and the seflies amassed in our gallery. Now, we were facing the
     next challenge. How should we create such a video? I was just starting programming 
@@ -93,6 +103,8 @@ background: '/img/posts/adam_and_robot.jpg'
     make it smooth in reasonable time.
 </p>
 
+<h2 class="section-heading">AI to the rescue</h2>
+
 <p align=“justify“>
     Fast forward four years to 2022, I still took a selfie every now and then but missed many weeks. I even lost 
     the bet and am in debt of one festival (pity me)! One day in my holidays,
@@ -124,16 +136,18 @@ background: '/img/posts/adam_and_robot.jpg'
 
 <p align=“justify“>
     Let's say, I decided the horizontal margin ratio is 0.75 and the 
-    face in one photo was recognized to be 100px wide and has a left margin of 60px (= distance from the face to the left side) and a right margin 
-    of 80px (i.e. the face is not in the center but on the left of the photo, like in the selfie above). 
+    face in one photo was recognized to be 100px wide and has a left margin of 40px (= distance from the face to the left side) and a right margin 
+    of 50px (i.e. the face is not exactly in the center but a bit to the left of the photo, like in the selfie above). 
     Then, the horizontal margin ratio, for me, means that I want 75px (= ratio * face width) both 
     on the left and right of the face, so the face ends up in the center. Since the left margin
-    is only 60px and I need 75px, I create a black left-padding of 15px. On the right,
-    I also want 75px but have 80px so I cut off 5px.
+    is only 40px and I need 75px, I create a black left-padding of 35px. On the right,
+    I also want 75px but have 50px, so I add 25px here. If the margin was greater than
+    what I want, I cut from the side of the image. All this is fairly easy to do with
+    OpenCV.
 </p>
 
 <img class="img-fluid" src="/img/posts/ai_project/with_box_h_aligned.jpeg" alt="A selfie with a box printed around the face.">
-<span class="caption text-muted">The same selfie with left padding and cut on the right.</span>
+<span class="caption text-muted">The same selfie with left and right padding.</span>
 
 <p align=“justify“>
     I rather cut than introduce lots of black padding in the GIF. So I did a small analysis
@@ -161,6 +175,9 @@ background: '/img/posts/adam_and_robot.jpg'
     post that I do not want to share publicly but I ended up taking one photo about every 
     10 days on average.
 </p>
+
+<h2 class="section-heading">The result</h2>
+
 <p align=“justify“>
     The final result, which you were hopefully looking forward to by now is here:
 </p>
