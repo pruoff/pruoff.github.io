@@ -10,7 +10,7 @@ github_username:    pruoff
 linkedin_username:  patrick-ruoff
 
 # Add your google-analytics ID here to activate google analytics
-# google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
+google_analytics:   G-CY59YXR2CE # out your google-analytics code
 
 # Build settings
 markdown:           kramdown
