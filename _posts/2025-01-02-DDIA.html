@@ -21,7 +21,7 @@ background: '/img/posts/DA_book/DDIA_cover.jpeg'
     I recently reread the full book so I thought it
     nice to pass on the recommendation to whoever is interested in deepening their
     understanding of services available to the modern data tech-stack.
-    I guarantee that you'll learn something new about the internals of PostgreSQL, Kafka, ZooKeeper, and more.
+    I guarantee that you'll learn something new about the internals of PostgreSQL, Kafka, ZooKeeper, and many more.
 </p>
 
 <img class="img-fluid" src="/img/posts/DA_book/DDIA_cover.jpeg" alt="The book 'Designing Data-Intensive Applications' by Martin Kleppmann.">
@@ -52,25 +52,22 @@ background: '/img/posts/DA_book/DDIA_cover.jpeg'
 Let me mention a few of my personal highlights while the table of contents is considerably longer. I recommend reading all chapters but it might take you a while to finish all 544 pages.
 
 <p align="justify">
-<b>1. Storage Engines</b>
-<br>
-Understanding how databases manage data on disk is helpful for also understanding their high-level properties. Kleppmann introduces concepts like 
+<h4 class="sub-heading">1. Storage Engines</h4>
+Understanding how databases manage data on disk is helpful for also understanding their high-level properties. Kleppmann introduces 
 log-structured merge trees (LSM) and B-trees, explaining how they underpin many popular storage engines. I never read about these 
-underlying concepts in such details before and think differently about databases ever since.
-<br><br>
-<b>2. Distributed Data Systems</b>
-<br>
-Distributed systems are the backbone of modern applications, but they come with inherent complexity. Kleppmann delves 
-into concepts like replication, partitioning, transactions and consensus algorithms. 
+underlying concepts in such detail before and think differently about databases ever since.
+
+<h4 class="sub-heading">2. Distributed Data Systems</h4>
+Distributed systems are the backbone of modern applications, but they come with inherent complexity. Kleppmann dives deep into the related fields of 
+replication, partitioning, transactions and consensus algorithms. 
 For instance, he introduces common replication strategies and their trade-offs. Leader-based, multi-leader, and leaderless approaches each have pros and cons depending on consistency and availability requirements.
 Another chapter covers partitioning in detail. Dividing data across nodes improves scalability but introduces issues like skewed workloads, rebalancing, and concerns with consistency.
 I also really enjoyed the chapter on transactions. Kleppmann made me grasp the full scope of the challenges with the various isolation levels and conflicts.
-<br><br>
-<b>3. Consistency, Availability, and Partition-Tolerance</b>
-<br>
-Just like in any extensive piece on database systems, the CAP theorem is discussed as well. Kleppmann explains his 
+
+<h4 class="sub-heading">3. Consistency, Availability, and Partition-Tolerance</h4>
+Just like in any extensive piece on distributed systems, the CAP theorem is discussed as well. Yet, Kleppmann explains his 
 critical view on the theorem that's misunderstood a lot and offers other strategies for making informed trade-offs.
-In general, the book does a good job explaining doubts with many common wisdoms and marketed guarantees.
+In general, I think the book does a great job explaining doubts with many marketed guarantees.
 
 <!-- <br><br>
 <b>4. Stream and Batch Processing</b>
