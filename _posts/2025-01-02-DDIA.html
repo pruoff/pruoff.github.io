@@ -1,0 +1,98 @@
+---
+layout: post
+title: "The one book any Data Engineer should read"
+date: 2025-01-02 08:00:00 +0100
+background: '/img/posts/DA_book/DDIA_cover.jpeg'
+---
+
+<p align="justify">
+    Back when I started out my professional career as a Data Engineer at inovex, many respected
+    seniors recommended the book 'Designing Data-Intensive Applications' by Martin Kleppmann. It was
+    praised as a great read
+    to both deepen your understanding of data storage internals and broaden your view for
+    the concepts that build up the architectures of modern data systems.
+    <br>Apart from all the documentation, I didn't read too many technical books back then
+    so I was hesitant at first, questioning if that's a good way to spend my time.
+    But I gave it a try and from the beginning I absolutely loved it! 
+    I was blown away by the great insights into so many concepts that govern
+    the technologies I work with everyday. Many of these I knew from my studies and 
+    self-education but this book went deeper into what I felt are the relevant topics for
+    understanding data applications. 
+    I recently reread the full book so I thought it
+    nice to pass on the recommendation to whoever is interested in deepening their
+    understanding of services available to the modern data tech-stack.
+    I guarantee that you'll learn something new about the internals of PostgreSQL, Kafka, ZooKeeper, and many more.
+</p>
+
+<img class="img-fluid" src="/img/posts/DA_book/DDIA_cover.jpeg" alt="The book 'Designing Data-Intensive Applications' by Martin Kleppmann.">
+<span class="caption text-muted">The typical O'Reilly-style cover. One can't not love it.</span>
+
+<h4 class="section-heading">What do I think makes it stand out?</h4>
+<p align="justify">
+    First, it's foundational and practical.
+    Kleppmann balances deep theoretical insights with practical advice, making complex topics accessible. 
+    Whether you're a software engineer new to distributed systems or a seasoned architect, the 
+    book provides value by bridging academic research and real-world applications.
+    <br>
+    Second, its broad scope.
+    The book covers a wide range of topics, including database internals, data modeling, distributed systems, 
+    fault tolerance, consistency, and scalability. 
+    This breadth makes it a comprehensive guide for anyone working with data processing systems.
+    I found myself many times, rereading parts when they became relevant on my current project or study.
+    <br>
+    Third, its comprehensibility.
+    The content is highly technical and hard to grasp at times. I would not recommend to read it after a 
+    long day of cooking your brain at the office. Yet, I think that Kleppmann made a great job
+    explaining these concepts in a clear and understandable way, building up on previous 
+    chapters as the book progresses.  
+</p>
+
+<h4 class="section-heading">What's covered?</h4>
+
+Let me mention a few of my personal highlights while the table of contents is considerably longer. I recommend reading all chapters but it might take you a while to finish all 544 pages.
+
+<p align="justify">
+<h4 class="sub-heading">1. Storage Engines</h4>
+Understanding how databases manage data on disk is helpful for also understanding their high-level properties. Kleppmann introduces 
+log-structured merge trees (LSM) and B-trees, explaining how they underpin many popular storage engines. I never read about these 
+underlying concepts in such detail before and think differently about databases ever since.
+
+<h4 class="sub-heading">2. Distributed Data Systems</h4>
+Distributed systems are the backbone of modern applications, but they come with inherent complexity. Kleppmann dives deep into the related fields of 
+replication, partitioning, transactions and consensus algorithms. 
+For instance, he introduces common replication strategies and their trade-offs. Leader-based, multi-leader, and leaderless approaches each have pros and cons depending on consistency and availability requirements.
+Another chapter covers partitioning in detail. Dividing data across nodes improves scalability but introduces issues like skewed workloads, rebalancing, and concerns with consistency.
+I also really enjoyed the chapter on transactions. Kleppmann made me grasp the full scope of the challenges with the various isolation levels and conflicts.
+
+<h4 class="sub-heading">3. Consistency, Availability, and Partition-Tolerance</h4>
+Just like in any extensive piece on distributed systems, the CAP theorem is discussed as well. Yet, Kleppmann explains his 
+critical view on the theorem that's misunderstood a lot and offers other strategies for making informed trade-offs.
+In general, I think the book does a great job explaining doubts with many marketed guarantees.
+
+<!-- <br><br>
+<b>4. Stream and Batch Processing</b>
+<br>
+Kleppmann highlights the importance of data pipelines and processing frameworks. Whether it's Spark for batch processing 
+or Kafka for real-time streaming, understanding their strengths and weaknesses is crucial for designing robust pipelines
+that meet your business requirements. -->
+
+<!-- 
+Why It Matters Today
+In a world driven by data, Kleppmann's work serves as a critical resource for building systems that are not only efficient 
+but also resilient to failure. The book's vendor-neutral, principle-driven approach is particularly valuable in a rapidly changing technology landscape. -->
+
+<br><br>
+<h4 class="section-heading">So who should read it?</h4>
+<b>Software Engineers</b> looking to deepen their understanding of databases and distributed systems.
+<br><b>System Architects</b> needing to design scalable, fault-tolerant applications.
+<br><b>Data Engineers</b> aiming to optimize data pipelines and storage systems.
+<br><b>Technical Leaders</b> seeking to guide their teams in making sound design decisions.
+<br><br>
+If you're serious about building systems that stand the test of time, I'm convinced this book deserves a prominent spot on your shelf.
+</p>
+
+<p align="justify">
+<i>
+    PS: I have no affiliation with Martin Kleppmann or O'Reilly (unfortunately!)
+</i>
+</p>
